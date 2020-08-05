@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap');
+
+$color-primary: #f9f871;
+$color-secondary: #100325;
+
+@function strip-unit($val) {
+  @return $val / ($val * 0 + 1);
+}
+
+@mixin fluid-font($min, $max) {
+  font-size: calc(#{$min} + #{strip-unit($max - $min)} * ((100vw - 360px) / 1200));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  font-family: 'Red Rose', cursive;
+}
+
+html, body {
+  font-size: 10px;
+  scroll-behavior: smooth;
+  min-height: 100%;
+  background-color: $color-secondary;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+.title {
+  padding: 2rem 0;
+  @include fluid-font(25px,50px);
+  color: $color-primary;
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  .content-btn {
+    font-size: 2rem;
+    @include fluid-font(15px,20px);
+    color: $color-primary;
+    background-color: $color-secondary;
+    border: 1px solid $color-primary;
+    padding: 1rem;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+  }
+  
+}
