@@ -3,7 +3,7 @@ import React from 'react'
 const Worlds = () => {
     return (
         <div>
-            worlds
+            <h2>Explore the worlds</h2>
         </div>
     )
 }
