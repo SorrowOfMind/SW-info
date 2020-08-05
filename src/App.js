@@ -4,14 +4,13 @@ import Heroes from './components/Heroes';
 import Worlds from './components/Worlds';
 
 function App() {
-  const [content, stContent] = useState('heroes');
+  const [content, setContent] = useState('heroes');
   return (
     <div className="App">
       <h1>Your Star Wars Hub</h1>
-      <Navbar />
+      <Navbar setContent={setContent}/>
       <div className="content">
-        {content === 'heroes' && <Heroes />}
-        {content === 'worlds' && <Worlds />}
+        {content === 'heroes' ? <Heroes /> : <Worlds />}
       </div>
     </div>
   );
