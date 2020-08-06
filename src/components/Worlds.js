@@ -14,7 +14,7 @@ const Worlds = () => {
 
     return (
         <div>
-            <h2>Explore the worlds</h2>
+            <h2 className="subtitle">Explore the worlds</h2>
             {status === 'loading' && <div className="status-msg">Loading...</div>}
             {status === 'error' && <div className="status-msg">Ooops! Something didn't go according to the plan.</div>}
             {status === 'success' && (
