@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useQuery} from 'react-query';
 import axios from 'axios';
 import World from './World';
 
-const fetchWorlds = async () => {
-    const WORLDS_URL = "https://swapi.dev/api/planets/";
+const fetchWorlds = async (key, page) => {
+    const WORLDS_URL = `https://swapi.dev/api/planets/?page=${page}`;
     const res = await axios.get(WORLDS_URL).catch(err => alert(err));
     return res.data;
 }
 
 const Worlds = () => {
-    const {data, status} = useQuery('worlds', fetchWorlds, {
+    const [page, setPage] = useState(1);
+    const {data, status} = useQuery(['worlds', page], fetchWorlds, {
         staleTime: 10000,
         cacheTime: 60000,
         onSuccess: () => console.log('success')
