@@ -15,12 +15,22 @@ const Heroes = () => {
         staleTime: 10000,
         cacheTime: 60000
     });
-    console.log(data);
+    
+    const handleNextPage = () => {
+        if (page < 6) setPage(prevPage => prevPage += 1);
+    }
+
+    const handlePreviousPage = () => {
+        if (page > 1) setPage(prevPage => prevPage -= 1);
+    }
+
     return (
         <div>
             <h2 className="subtitle">Meet your heroes & villians</h2>
-            <button className="page-btn">Next</button>
-            <button className="page-btn">Previous</button>
+            <div className="btns">
+                <button className={page === 1 ? "page-btn disabled" : "page-btn"} onClick={handlePreviousPage}>Previous</button>
+                <button className={page === 6 ? "page-btn disabled" : "page-btn"} onClick={handleNextPage}>Next</button>
+            </div>
             {status === 'loading' && <div className="status-msg">Loading...</div>}
             {status === 'error' && <div className="status-msg">Ooops! Something didn't go according to the plan.</div>}
             {status === 'success' && (
