@@ -10,7 +10,11 @@ const fetchWorlds = async () => {
 }
 
 const Worlds = () => {
-    const {data, status} = useQuery('worlds', fetchWorlds);
+    const {data, status} = useQuery('worlds', fetchWorlds, {
+        staleTime: 10000,
+        cacheTime: 60000,
+        onSuccess: () => console.log('success')
+    });
 
     return (
         <div>

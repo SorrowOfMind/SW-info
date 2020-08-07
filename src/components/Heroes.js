@@ -10,7 +10,10 @@ const fetchHeroes = async () => {
 }
 
 const Heroes = () => {
-    const {data, status} = useQuery('heroes', fetchHeroes);
+    const {data, status} = useQuery('heroes', fetchHeroes, {
+        staleTime: 10000,
+        cacheTime: 60000
+    });
     console.log(data);
     return (
         <div>
